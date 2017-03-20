@@ -1,0 +1,118 @@
+// 1, 嵌套规则
+
+#a {
+	.a-1{
+	background: yellow;
+	.child{
+		fot-size: 12px;
+		.cild-1{
+			color: red;
+		}
+		}
+	}
+}
+
+// 2, 引用福选择符: &
+
+a{
+	font-weight: bold;
+	text-decoration: none;
+	&:hover{
+	text-decoration: underline;
+	}
+	body.firefox & {font-weight: normal;}
+	&.active{
+		color: black;
+	}
+}
+
+// 3. 嵌套属性
+
+.funcky{
+	font: {
+		family: fantasy;
+		size: 30em;
+		weight: bold;
+	}
+	border:{
+		radius: 1px;
+		color: red;
+	}
+}
+
+
+// 4. 运算   脚本语言 动态性非常强 具有变量  具备程序的结构 
+// $ 定义一个变量 
+
+$width: 5em;
+
+#main{
+	width: $width;
+}
+
+
+// 括号改变运算的优先级
+
+p {
+	font: 10px/8px;
+	$width: 1000px;
+	width: $width/2;
+	width: round(1.5)/2;
+	height: (500px/2);
+	margin-left: 5px + 8px/2px;
+	color: #444000 + #040506;
+}
+
+// 5. 插入值,相当于一个占位符  #{}  插值"内"会进行运算的
+$attr : border;
+$value: null;
+div {
+	#{$attr}-color: red;
+	&:before{
+		content: "I am #{$value} Jack";
+	}
+}
+
+// 6. 规则 和 指令 
+// @import 引入SCSS 和 CSS 文件
+
+@import "aaa";
+ 
+// 7. @extend 继承,所有的东西拿进来,关于所有的一切都拿进来
+
+.linkhover{
+	@extend a:hover;
+}
+
+a:hover{
+	text-decoration: none;
+}
+.comment a.user:hover{
+	font-weight:bold;
+}
+
+// 8. @media 
+
+// 9. @mixin 很自由 不需要定义选择器,和 extend用法很类似
+// 10. @include 
+// 11. @if @else if @else
+// 12 @for 
+	@for $i from 1 through 3 { //1,2,3
+		.item-#{$i} {
+			width: 2em * $i;
+		}
+	}
+
+	@for $i from 1 to 3 { //1,2
+		.item-to-#{$i} {
+			width: 2em * $i;
+		}
+	}
+
+// 13 @function
+	
+
+
+
+
+
